@@ -2,6 +2,7 @@ package minigo
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"os"
 
@@ -9,6 +10,7 @@ import (
 )
 
 func DownloadFile(client *minio.Client, bucket string, filePath string, fileName string, downloadPath string) (err error) {
+	fmt.Println("client", client.EndpointURL())
 	object, err := client.GetObject(context.Background(), bucket, filePath+"/"+fileName, minio.GetObjectOptions{})
 	if err != nil {
 		return err
