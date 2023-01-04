@@ -8,7 +8,7 @@ import (
 	"github.com/minio/minio-go/v7"
 )
 
-func (client *MinioClient) DownloadFile(bucket string, filePath string, fileName string, downloadPath string) (err error) {
+func DownloadFile(client *minio.Client, bucket string, filePath string, fileName string, downloadPath string) (err error) {
 	object, err := client.GetObject(context.Background(), bucket, filePath+"/"+fileName, minio.GetObjectOptions{})
 	if err != nil {
 		return err

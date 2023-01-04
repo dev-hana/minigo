@@ -7,7 +7,7 @@ import (
 	"github.com/minio/minio-go/v7"
 )
 
-func (client *MinioClient) UploadFile(bucket string, uploadedPath string, filePath string, fileName string) (err error) {
+func UploadFile(client *minio.Client, bucket string, uploadedPath string, filePath string, fileName string) (err error) {
 	file, err := os.Open(filePath + "/" + fileName)
 	if err != nil {
 		return err
